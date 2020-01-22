@@ -1,0 +1,74 @@
+<div class="head">
+    <button class="btn btn-lg btn-outline-primary" (click)="open(content)">Filter</button>
+
+</div>
+<hr>
+
+<div class="tablee">
+    <table class="table">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">#</th>
+            <th *ngIf="value;else nxt" scope="col">First</th>
+            <ng-template #nxt></ng-template>
+            <th scope="col" *ngIf="value2;else nxt1">Last</th>
+            <ng-template #nxt1></ng-template>
+            <th scope="col" *ngIf="value3;else nxt1">Handle</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">1</th>
+            <td *ngIf="value;else nxt" >Mark</td>
+            <ng-template #nxt></ng-template>
+            <td *ngIf="value2;else nxt1">Otto</td>
+            <ng-template #nxt1></ng-template>
+            <td *ngIf="value3;else nxt1">@mdo</td>
+          </tr>
+          <tr>
+            <th scope="row">2</th>
+            <td *ngIf="value;else nxt">Jacob</td>
+            <ng-template #nxt></ng-template>
+            <td *ngIf="value2;else nxt1">Thornton</td>
+            <ng-template #nxt1></ng-template>
+            <td *ngIf="value3;else nxt1">@fat</td>
+          </tr>
+          <tr>
+            <th scope="row">3</th>
+            <td *ngIf="value;else nxt">Larry</td>
+            <ng-template #nxt></ng-template>
+            <td *ngIf="value2;else nxt1">the Bird</td>
+            <ng-template #nxt1></ng-template>
+            <td *ngIf="value3;else nxt1">@twitter</td>
+          </tr>
+        </tbody>
+      </table>
+    
+      
+
+</div>
+<ng-template #content let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Filter options</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    
+    <div [formGroup]="reactiveForm">
+      <div formArrayName="choices2" class="modal-body">
+        <div *ngFor="let control of choices2.controls;let i=index" [formGroupName]="i">
+            <input type="checkbox" formControlName="showField"  />{{arr1[i].name}}
+        </div>
+      </div>
+      
+            
+              <button class="btn btn-outline-secondary calendar" (click)="selected()" (click)="modal.close('Save click')"  type="button">Submit</button>
+            </div
+            >
+          
+        
+      
+        
+    
+  </ng-template>
